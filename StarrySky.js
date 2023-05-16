@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 import "bootstrap";
 
-const StarrySky = () => {
+const StarrySky = (rot) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -46,12 +46,12 @@ const StarrySky = () => {
 
     const animate = () => {
       requestAnimationFrame(animate);
-      starField.rotation.y += 0.001;
+      starField.rotation.y += rot;
       renderer.render(scene, camera);
     };
 
     animate();
-  }, []);
+  }, [rot]);
 
   return <canvas ref={canvasRef} style={{ height: "100vh", width: "100%" }} />;
 };
